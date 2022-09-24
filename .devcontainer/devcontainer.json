@@ -1,0 +1,24 @@
+{
+  "name": "terraform-aws-eks-repo-template.templates.utkusarioglu.com",
+  "dockerComposeFile": [
+    "../.docker/docker-compose.dev.yml",
+    "docker-compose.yml"
+  ],
+  "service": "terraform",
+  "workspaceFolder": "/utkusarioglu-com/templates/terraform-aws-eks-repo-template",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "hashicorp.terraform",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "amazonwebservices.aws-toolkit-vscode"
+      ],
+      "settings": {
+        "workbench.colorCustomizations": {
+          "activityBar.background": "#281244"
+        }
+      }
+    }
+  }
+}

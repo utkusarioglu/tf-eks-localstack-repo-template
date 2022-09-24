@@ -1,0 +1,16 @@
+{
+  "runOnSave.commands": [
+    {
+      "match": "\\.tf$",
+      "isAsync": true,
+      "command": "terraform fmt -recursive",
+    },
+    {
+      "match": "\\.tfvars$",
+      "isAsync": true,
+      "command": "terraform fmt -recursive",
+    }
+  ],
+  // this is because terraform plan and apply output can be humonguous
+  "terminal.integrated.scrollback": 20000
+}

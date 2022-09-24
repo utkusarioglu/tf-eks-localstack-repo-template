@@ -1,0 +1,245 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Watch kubectl",
+      "detail": "Watch kubernetes resources",
+      "type": "shell",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "scripts/kubectl-watch.sh",
+      "args": [
+        "${input:resources}"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "color": "terminal.ansiBlue",
+        "id": "eye"
+      },
+    },
+    {
+      "label": "Remove config from local kubectl",
+      "detail": "Add aws eks kubectl config to local local environment",
+      "type": "shell",
+      "command": "scripts/kubectl-remove-config.sh",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "remove",
+        "color": "terminal.ansiBlue"
+      }
+    },
+    {
+      "label": "Update local kubectl config",
+      "detail": "Add aws eks kubectl config to local local environment",
+      "type": "shell",
+      "command": "scripts/kubectl-update-config.sh",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "edit",
+        "color": "terminal.ansiBlue"
+      }
+    },
+    {
+      "label": "Run tests",
+      "detail": "Run tests using TerraTest",
+      "type": "shell",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "cd tests && go test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "beaker",
+        "color": "terminal.ansiGreen"
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    },
+    {
+      "label": "Tidy tests",
+      "detail": "Run `go mod tidy` for the tests folder",
+      "type": "shell",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "cd tests && go mod tidy",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "gripper",
+        "color": "terminal.ansiYellow"
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    },
+    {
+      "label": "Init tests",
+      "detail": "Run `go mod init` for the tests folder",
+      "type": "shell",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "cd tests && go mod init ${input:modName}",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "chevron-up",
+        "color": "terminal.ansiYellow"
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    },
+    {
+      "label": "terraform destroy",
+      "detail": "Destroy the resources managed by this repo",
+      "type": "shell",
+      "command": "terraform destroy",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      },
+      "icon": {
+        "id": "debug-stop",
+        "color": "terminal.ansiRed"
+      }
+    },
+    {
+      "label": "terraform apply",
+      "detail": "Create & alter the resources",
+      "type": "shell",
+      "command": "terraform apply",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "play",
+        "color": "terminal.ansiGreen"
+      }
+    },
+    {
+      "label": "terraform init",
+      "detail": "Initialize Terraform providers",
+      "type": "shell",
+      "command": "terraform init",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      },
+      "icon": {
+        "id": "chevron-up",
+        "color": "terminal.ansiYellow"
+      }
+    },
+    {
+      "label": "terraform plan",
+      "detail": "Initialize Terraform providers",
+      "type": "shell",
+      "command": "terraform plan",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "checklist",
+        "color": "terminal.ansiYellow"
+      },
+      "runOptions": {
+        "instanceLimit": 1,
+      }
+    },
+  ],
+  "inputs": [
+    {
+      "id": "modName",
+      "description": "Go module name for the tests folder",
+      "type": "promptString"
+    },
+    {
+      "id": "resources",
+      "description": "Input Kubernetes resources you would like to watch",
+      "default": "po svc",
+      "type": "promptString"
+    }
+  ]
+}
