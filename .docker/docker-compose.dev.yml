@@ -8,3 +8,24 @@ services:
       - ..:/utkusarioglu-com/templates/terraform-eks-localstack-repo-template
     environment:
       TZ: Etc/UTC
+
+  localstack:
+    container_name: nextjs-grpc-infra-aws-localstack
+    image: localstack/localstack
+    env_file: ../.env
+    environment:
+      TZ: Etc/UTC
+      DEBUG: ${DEBUG-}
+      PERSISTENCE: ${PERSISTENCE-}
+      LAMBDA_EXECUTOR: ${LAMBDA_EXECUTOR-}
+      HOSTNAME_EXTERNAL: localstack
+      # LOCALSTACK_API_KEY: ${LOCALSTACK_API_KEY-}
+      DOCKER_HOST: unix:///var/run/docker.sock
+    volumes:
+      - localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ~/.kube:/root/.kube
+
+volumes:
+  localstack:
+    name: nextjs-grpc-infra-aws-localstack

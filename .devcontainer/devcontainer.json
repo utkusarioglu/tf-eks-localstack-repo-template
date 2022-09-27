@@ -4,6 +4,9 @@
     "../.docker/docker-compose.dev.yml",
     "docker-compose.yml"
   ],
+  "runServices": [
+    "localstack"
+  ],
   "postCreateCommand": "scripts/post-create-command.sh",
   "service": "terraform",
   "workspaceFolder": "/utkusarioglu-com/templates/terraform-eks-localstack-repo-template",
@@ -17,7 +20,7 @@
       ],
       "settings": {
         "workbench.colorCustomizations": {
-          "activityBar.background": "#281244"
+          "activityBar.background": "#2f78bd"
         }
       }
     }

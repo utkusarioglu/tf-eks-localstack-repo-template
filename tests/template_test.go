@@ -30,8 +30,8 @@ func TestTemplate(t *testing.T) {
 
 	test_structure.RunTestStage(t, "validate", func() {
 		terraformOptions := test_structure.LoadTerraformOptions(t, ".")
-		output := terraform.Output(t, terraformOptions, "greeting")
-		assert.Equal(t, "Hello, terraform-eks-repo-template!", output)
+		output := terraform.Output(t, terraformOptions, "vpc_id")
+		assert.Equal(t, "terraform-eks-localstack-repo-template", output)
 	})
 
 	test_structure.RunTestStage(t, "teardown", func() {

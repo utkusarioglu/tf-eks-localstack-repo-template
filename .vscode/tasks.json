@@ -2,6 +2,79 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Run tests on LocalStack",
+      "detail": "Run tests using TerraTest on LocalStack",
+      "type": "shell",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "scripts/run-tests.sh",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "beaker",
+        "color": "terminal.ansiGreen"
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    },
+    {
+      "label": "localstack destroy",
+      "detail": "Destroy the resources created on LocalStack",
+      "type": "shell",
+      "command": "scripts/localstack.sh",
+      "args": [
+        "destroy"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      },
+      "icon": {
+        "id": "debug-stop",
+        "color": "terminal.ansiMagenta"
+      }
+    },
+    {
+      "label": "localstack apply",
+      "detail": "Apply terraform configuration to LocalStack",
+      "type": "shell",
+      "command": "scripts/localstack.sh",
+      "args": [
+        "apply",
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "play",
+        "color": "terminal.ansiMagenta"
+      }
+    },
+    {
       "label": "Watch kubectl",
       "detail": "Watch kubernetes resources",
       "type": "shell",
@@ -28,7 +101,7 @@
       },
     },
     {
-      "label": "Drop EKS cluster config",
+      "label": "Drop Localstack EKS cluster config",
       "detail": "Remove AWS EKS cluster from local kube config",
       "type": "shell",
       "command": "scripts/kubectl-drop-config.sh",
@@ -47,7 +120,7 @@
       }
     },
     {
-      "label": "Push EKS cluster config",
+      "label": "Push Localstack EKS cluster config",
       "detail": "Add AWS EKS cluster to local kube config",
       "type": "shell",
       "command": "scripts/kubectl-push-config.sh",
@@ -63,79 +136,6 @@
       "icon": {
         "id": "edit",
         "color": "terminal.ansiBlue"
-      }
-    },
-    {
-      "label": "Run tests on AWS",
-      "detail": "Run tests using TerraTest on AWS",
-      "type": "shell",
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
-      "command": "scripts/run-tests.sh",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "new",
-        "showReuseMessage": false,
-        "clear": false,
-        "close": false
-      },
-      "icon": {
-        "id": "beaker",
-        "color": "terminal.ansiGreen"
-      },
-      "runOptions": {
-        "instanceLimit": 1
-      }
-    },
-    {
-      "label": "terraform destroy",
-      "detail": "Destroy the resources managed by this repo",
-      "type": "shell",
-      "command": "scripts/terraform.sh",
-      "args": [
-        "destroy"
-      ],
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "new",
-        "showReuseMessage": false,
-        "clear": false,
-        "close": false
-      },
-      "runOptions": {
-        "instanceLimit": 1
-      },
-      "icon": {
-        "id": "debug-stop",
-        "color": "terminal.ansiRed"
-      }
-    },
-    {
-      "label": "terraform apply",
-      "detail": "Create & alter the resources",
-      "type": "shell",
-      "command": "scripts/terraform.sh",
-      "args": [
-        "apply",
-      ],
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "new",
-        "showReuseMessage": false,
-        "clear": false,
-        "close": false
-      },
-      "icon": {
-        "id": "play",
-        "color": "terminal.ansiGreen"
       }
     },
     {
@@ -161,31 +161,6 @@
       "icon": {
         "id": "chevron-up",
         "color": "terminal.ansiYellow"
-      }
-    },
-    {
-      "label": "terraform plan",
-      "detail": "Initialize Terraform providers",
-      "type": "shell",
-      "command": "scripts/terraform.sh",
-      "args": [
-        "plan",
-      ],
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "new",
-        "showReuseMessage": false,
-        "clear": false,
-        "close": false
-      },
-      "icon": {
-        "id": "checklist",
-        "color": "terminal.ansiYellow"
-      },
-      "runOptions": {
-        "instanceLimit": 1,
       }
     },
   ],

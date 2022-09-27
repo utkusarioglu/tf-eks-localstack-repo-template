@@ -29,3 +29,17 @@ variable "cluster_version" {
   type        = string
   description = "Version of the EKS cluster"
 }
+
+variable "mld" {
+  type        = string
+  description = "Mid-level domain"
+}
+
+variable "tld" {
+  type        = string
+  description = "Top-level domain"
+}
+
+variable "cluster_region" {
+  type = string
+}
