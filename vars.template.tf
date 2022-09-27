@@ -14,3 +14,18 @@ variable "cluster_name" {
     error_message = "tfvars `cluster_name` attribute has to be set to the desired cluster name"
   }
 }
+
+variable "project_name" {
+  description = "Name of the project"
+  type        = string
+}
+
+variable "aws_profile" {
+  type        = string
+  description = "AWS profile to use"
+}
+
+variable "cluster_version" {
+  type        = string
+  description = "Version of the EKS cluster"
+}

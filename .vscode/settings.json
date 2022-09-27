@@ -9,7 +9,18 @@
       "match": "\\.tfvars$",
       "isAsync": true,
       "command": "terraform fmt -recursive",
-    }
+    },
+    {
+      "match": "\\.env(\\.\\w+)?$",
+      "notMatch": "\\.example$",
+      "isAsync": true,
+      "command": "/scripts/create-env-example.sh"
+    },
+    {
+      "match": "\\.env$",
+      "isAsync": true,
+      "command": "gh secret set -f .env"
+    },
   ],
   // this is because terraform plan and apply output can be humonguous
   "terminal.integrated.scrollback": 20000

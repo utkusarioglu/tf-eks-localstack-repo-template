@@ -28,10 +28,10 @@
       },
     },
     {
-      "label": "Remove config from local kubectl",
-      "detail": "Add aws eks kubectl config to local local environment",
+      "label": "Drop EKS cluster config",
+      "detail": "Remove AWS EKS cluster from local kube config",
       "type": "shell",
-      "command": "scripts/kubectl-remove-config.sh",
+      "command": "scripts/kubectl-drop-config.sh",
       "presentation": {
         "echo": true,
         "reveal": "always",
@@ -47,10 +47,10 @@
       }
     },
     {
-      "label": "Update local kubectl config",
-      "detail": "Add aws eks kubectl config to local local environment",
+      "label": "Push EKS cluster config",
+      "detail": "Add AWS EKS cluster to local kube config",
       "type": "shell",
-      "command": "scripts/kubectl-update-config.sh",
+      "command": "scripts/kubectl-push-config.sh",
       "presentation": {
         "echo": true,
         "reveal": "always",
@@ -66,14 +66,14 @@
       }
     },
     {
-      "label": "Run tests",
-      "detail": "Run tests using TerraTest",
+      "label": "Run tests on AWS",
+      "detail": "Run tests using TerraTest on AWS",
       "type": "shell",
       "group": {
         "kind": "test",
         "isDefault": true
       },
-      "command": "cd tests && go test",
+      "command": "scripts/run-tests.sh",
       "presentation": {
         "echo": true,
         "reveal": "always",
@@ -92,62 +92,13 @@
       }
     },
     {
-      "label": "Tidy tests",
-      "detail": "Run `go mod tidy` for the tests folder",
-      "type": "shell",
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
-      "command": "cd tests && go mod tidy",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "dedicated",
-        "showReuseMessage": false,
-        "clear": false,
-        "close": false
-      },
-      "icon": {
-        "id": "gripper",
-        "color": "terminal.ansiYellow"
-      },
-      "runOptions": {
-        "instanceLimit": 1
-      }
-    },
-    {
-      "label": "Init tests",
-      "detail": "Run `go mod init` for the tests folder",
-      "type": "shell",
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
-      "command": "cd tests && go mod init ${input:modName}",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "dedicated",
-        "showReuseMessage": false,
-        "clear": false,
-        "close": false
-      },
-      "icon": {
-        "id": "chevron-up",
-        "color": "terminal.ansiYellow"
-      },
-      "runOptions": {
-        "instanceLimit": 1
-      }
-    },
-    {
       "label": "terraform destroy",
       "detail": "Destroy the resources managed by this repo",
       "type": "shell",
-      "command": "terraform destroy",
+      "command": "scripts/terraform.sh",
+      "args": [
+        "destroy"
+      ],
       "presentation": {
         "echo": true,
         "reveal": "always",
@@ -169,7 +120,10 @@
       "label": "terraform apply",
       "detail": "Create & alter the resources",
       "type": "shell",
-      "command": "terraform apply",
+      "command": "scripts/terraform.sh",
+      "args": [
+        "apply",
+      ],
       "presentation": {
         "echo": true,
         "reveal": "always",
@@ -188,7 +142,10 @@
       "label": "terraform init",
       "detail": "Initialize Terraform providers",
       "type": "shell",
-      "command": "terraform init",
+      "command": "terraform",
+      "args": [
+        "init"
+      ],
       "presentation": {
         "echo": true,
         "reveal": "always",
@@ -210,7 +167,10 @@
       "label": "terraform plan",
       "detail": "Initialize Terraform providers",
       "type": "shell",
-      "command": "terraform plan",
+      "command": "scripts/terraform.sh",
+      "args": [
+        "plan",
+      ],
       "presentation": {
         "echo": true,
         "reveal": "always",
@@ -238,7 +198,7 @@
     {
       "id": "resources",
       "description": "Input Kubernetes resources you would like to watch",
-      "default": "po svc",
+      "default": "po svc ing",
       "type": "promptString"
     }
   ]

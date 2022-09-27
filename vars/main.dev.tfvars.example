@@ -1,0 +1,5 @@
+project_root_rel_path = "."
+cluster_name          = "example-cluter"
+project_name          = "example-project"
+aws_profile           = "example-profile"
+cluster_version       = "0.0"

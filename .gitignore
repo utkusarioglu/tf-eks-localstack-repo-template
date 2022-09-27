@@ -37,4 +37,9 @@ terraform.rc
 *.env
 !*.env.example
 
-.test-data
+/vars/**
+!/vars/**.example
+
+/logs
+/plans
+/tests/.test-data

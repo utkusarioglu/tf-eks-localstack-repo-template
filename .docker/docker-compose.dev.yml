@@ -2,7 +2,9 @@ version: "3.9"
 
 services:
   terraform:
-    container_name: terraform-aws-eks-repo-template
-    image: utkusarioglu/terraform-aws-eks-devcontainer:1.2.13
+    container_name: terraform-eks-localstack-repo-template
+    image: utkusarioglu/terraform-aws-eks-devcontainer:1.2.14
     volumes:
-      - ..:/utkusarioglu-com/templates/terraform-aws-eks-repo-template
+      - ..:/utkusarioglu-com/templates/terraform-eks-localstack-repo-template
+    environment:
+      TZ: Etc/UTC

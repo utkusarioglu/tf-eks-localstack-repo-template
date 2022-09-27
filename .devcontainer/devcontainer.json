@@ -1,11 +1,12 @@
 {
-  "name": "terraform-aws-eks-repo-template.templates.utkusarioglu.com",
+  "name": "terraform-eks-localstack-repo-template.templates.utkusarioglu.com",
   "dockerComposeFile": [
     "../.docker/docker-compose.dev.yml",
     "docker-compose.yml"
   ],
+  "postCreateCommand": "scripts/post-create-command.sh",
   "service": "terraform",
-  "workspaceFolder": "/utkusarioglu-com/templates/terraform-aws-eks-repo-template",
+  "workspaceFolder": "/utkusarioglu-com/templates/terraform-eks-localstack-repo-template",
   "customizations": {
     "vscode": {
       "extensions": [
