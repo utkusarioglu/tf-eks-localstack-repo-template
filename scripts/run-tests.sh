@@ -6,10 +6,10 @@ source scripts/localstack-shim.sh
 
 mkdir -p logs
 
-echo "Starting Terratest…"
 create_localstack_shim
 echo
 
+echo "Starting Terratest…"
 cd tests && go test -timeout 90m && cd ..
 
 echo
