@@ -54,3 +54,8 @@ variable "localstack_endpoint" {
   type        = string # url
   description = "Url from which localstack service is accessible"
 }
+
+variable "dns_region" {
+  type        = string
+  description = "AWS region where the dns records are created"
+}
