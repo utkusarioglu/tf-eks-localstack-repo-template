@@ -27,4 +27,4 @@ services:
 
 volumes:
   localstack:
-    name: nextjs-grpc-infra-aws-localstack
+    name: terraform-eks-localstack-repo-template-localstack
