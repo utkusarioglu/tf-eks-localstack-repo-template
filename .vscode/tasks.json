@@ -75,6 +75,28 @@
       }
     },
     {
+      "label": "localstack plan",
+      "detail": "Plan terraform configuration for LocalStack",
+      "type": "shell",
+      "command": "scripts/localstack.sh",
+      "args": [
+        "plan",
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false,
+        "close": false
+      },
+      "icon": {
+        "id": "checklist",
+        "color": "terminal.ansiMagenta"
+      }
+    },
+    {
       "label": "Watch kubectl",
       "detail": "Watch kubernetes resources",
       "type": "shell",
