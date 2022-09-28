@@ -1,16 +1,16 @@
 version: "3.9"
 
 services:
-  terraform:
-    container_name: terraform-eks-localstack-repo-template
+  terraform-eks-localstack-repo-template-terraform:
+    container_name: terraform-eks-localstack-repo-template-terraform
     image: utkusarioglu/terraform-aws-eks-devcontainer:1.2.14
     volumes:
       - ..:/utkusarioglu-com/templates/terraform-eks-localstack-repo-template
     environment:
       TZ: Etc/UTC
 
-  localstack:
-    container_name: nextjs-grpc-infra-aws-localstack
+  terraform-eks-localstack-repo-template-localstack:
+    container_name: terraform-eks-localstack-repo-template-localstack
     image: localstack/localstack
     env_file: ../.env
     environment:
@@ -18,8 +18,7 @@ services:
       DEBUG: ${DEBUG-}
       PERSISTENCE: ${PERSISTENCE-}
       LAMBDA_EXECUTOR: ${LAMBDA_EXECUTOR-}
-      HOSTNAME_EXTERNAL: localstack
-      # LOCALSTACK_API_KEY: ${LOCALSTACK_API_KEY-}
+      HOSTNAME_EXTERNAL: terraform-eks-localstack-repo-template-localstack
       DOCKER_HOST: unix:///var/run/docker.sock
     volumes:
       - localstack:/var/lib/localstack"

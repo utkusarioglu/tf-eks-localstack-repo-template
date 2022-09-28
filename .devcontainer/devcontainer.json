@@ -5,10 +5,10 @@
     "docker-compose.yml"
   ],
   "runServices": [
-    "localstack"
+    "terraform-eks-localstack-repo-template-localstack"
   ],
   "postCreateCommand": "scripts/post-create-command.sh",
-  "service": "terraform",
+  "service": "terraform-eks-localstack-repo-template-terraform",
   "workspaceFolder": "/utkusarioglu-com/templates/terraform-eks-localstack-repo-template",
   "customizations": {
     "vscode": {

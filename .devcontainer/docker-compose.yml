@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  terraform:
+  terraform-eks-localstack-repo-template-terraform:
     volumes:
       - vscode-extensions:/root/.vscode-server/extensions
       - vscode-extensions-insiders:/root/.vscode-server-insiders/extensions

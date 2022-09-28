@@ -30,6 +30,16 @@ variable "cluster_version" {
   description = "Version of the EKS cluster"
 }
 
+variable "cluster_region" {
+  type        = string
+  description = "AWS region in which the cluster shall be created"
+}
+
+variable "aws_provider_default_tags" {
+  type        = map(string)
+  description = "Default tags for every AWS resource to be created"
+}
+
 variable "mld" {
   type        = string
   description = "Mid-level domain"
@@ -40,6 +50,7 @@ variable "tld" {
   description = "Top-level domain"
 }
 
-variable "cluster_region" {
-  type = string
+variable "localstack_endpoint" {
+  type        = string # url
+  description = "Url from which localstack service is accessible"
 }

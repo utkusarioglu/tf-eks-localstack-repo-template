@@ -9,34 +9,38 @@ provider "aws" {
   skip_metadata_api_check     = true
   skip_requesting_account_id  = true
 
+  default_tags {
+    tags = var.aws_provider_default_tags
+  }
+
   endpoints {
-    apigateway       = "http://localstack:4566"
-    autoscaling      = "http://localstack:4566"
-    autoscalingplans = "http://localstack:4566"
-    cloudformation   = "http://localstack:4566"
-    elbv2            = "http://localstack:4566"
-    cloudwatch       = "http://localstack:4566"
-    dynamodb         = "http://localstack:4566"
-    ec2              = "http://localstack:4566"
-    acm              = "http://localstack:4566"
-    cloudwatchlogs   = "http://localstack:4566"
-    eks              = "http://localstack:4566"
-    es               = "http://localstack:4566"
-    firehose         = "http://localstack:4566"
-    iam              = "http://localstack:4566"
-    kinesis          = "http://localstack:4566"
-    lambda           = "http://localstack:4566"
-    redshift         = "http://localstack:4566"
-    route53          = "http://localstack:4566"
-    route53resolver  = "http://localstack:4566"
-    route53domains   = "http://localstack:4566"
-    s3               = "http://localstack:4566"
-    secretsmanager   = "http://localstack:4566"
-    ses              = "http://localstack:4566"
-    sns              = "http://localstack:4566"
-    sqs              = "http://localstack:4566"
-    ssm              = "http://localstack:4566"
-    stepfunctions    = "http://localstack:4566"
-    sts              = "http://localstack:4566"
+    apigateway       = var.localstack_endpoint
+    autoscaling      = var.localstack_endpoint
+    autoscalingplans = var.localstack_endpoint
+    cloudformation   = var.localstack_endpoint
+    elbv2            = var.localstack_endpoint
+    cloudwatch       = var.localstack_endpoint
+    dynamodb         = var.localstack_endpoint
+    ec2              = var.localstack_endpoint
+    acm              = var.localstack_endpoint
+    cloudwatchlogs   = var.localstack_endpoint
+    eks              = var.localstack_endpoint
+    es               = var.localstack_endpoint
+    firehose         = var.localstack_endpoint
+    iam              = var.localstack_endpoint
+    kinesis          = var.localstack_endpoint
+    lambda           = var.localstack_endpoint
+    redshift         = var.localstack_endpoint
+    route53          = var.localstack_endpoint
+    route53resolver  = var.localstack_endpoint
+    route53domains   = var.localstack_endpoint
+    s3               = var.localstack_endpoint
+    secretsmanager   = var.localstack_endpoint
+    ses              = var.localstack_endpoint
+    sns              = var.localstack_endpoint
+    sqs              = var.localstack_endpoint
+    ssm              = var.localstack_endpoint
+    stepfunctions    = var.localstack_endpoint
+    sts              = var.localstack_endpoint
   }
 }
